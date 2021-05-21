@@ -4,7 +4,128 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap" rel="stylesheet"> 
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.12/css/weather-icons.min.css"
+      integrity="sha512-r/Gan7PMSRovDus++vDS2Ayutc/cSdl268u047n4z+k7GYuR7Hiw71FsT3QQxdKJBVHYttOJ6IGLnlM9IoMToQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
     <title>Weather App</title>
   </head>
-  <body></body>
+  <body>
+    <main>
+      <div class="container">
+        <div class="location">
+          <h1 class="city">Gdynia, PL</h1>
+          <i class="wi wi-day-rain"></i>
+          <h1 class="temp">15 &#8451;</h1>
+          <h2 class="weather">Rainy as fuck</h2>
+          
+        </div>
+
+        <div class="date">
+          <h3 class="day-of-week">Friday</h3>
+          <h3 class="calendar"> 21st May 2021</h3>
+        </div>
+
+        <div class="weather-details">
+          <div class="block">
+            <div class="feels-like">
+              <i class="wi wi-thermometer-exterior"></i>
+              <h5>Feels like</h5>
+              <h3>13</3>
+            </div>
+            <div class="humidity">
+              <i class="wi wi-humidity"></i>
+              <h5>Humidity</h5>
+              <h3>90%</h3>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="wind-speed">
+              <i class="wi wi-strong-wind"></i>
+              <h5>Wind speed</h5>
+              <h3>23 km/h</h3>
+            </div>
+            <div class="rain-chance">
+              <i class="wi wi-showers"></i>
+              <h5>Chance of rain</h5>
+              <h3>30%</h3>
+            </div>
+          </div>
+
+          <div class="block">
+            <div class="sunrise">
+              <i class="wi wi-sunrise"></i>
+              <h5>Sunrise</h5>
+              <h3>04:45</h3>
+            </div>
+
+            <div class="sunset">
+              <i class="wi wi-sunset"></i>
+              <h5>Sunset</h5>
+              <h3>21:15</h3>
+            </div>
+          </div>
+
+          <div class="block"></div>
+        </div>
+      </div>
+    </main>
+
+    <section>
+      <div class="container">
+        <div class="search">
+          <input type="text" class="location" placeholder="Enter location...">
+        </div>
+      </div>
+    </section>
+
+    <section class="forecast">
+      <div class="container">
+        <button class="hourly-button" data-id="1">Hourly</button>
+        <button class="daily-button" data-id="2">Daily</button>
+
+        <div class="daily hide" id="2">
+          <div class="headers">
+            <h3>DAY</h3>
+            <h3></h3>
+            <h3>CHANCE OF RAIN</h3>
+            <h3>HUMIDITY</h3>
+            <h3>TEMP MAX/MIN</h3>
+          </div>
+
+          <div class="day">
+            <h2>Monday</h2>
+            <i class="wi wi-day-sunny"></i>
+            <h2>98%</h2>
+            <h2>50%</h2>
+            <h2>24 | 18 C</h2>
+          </div>
+        </div>
+
+        <div class="hourly hide" id="#1">
+          <div class="headers">
+            <h3>HOUR</h3>
+            <h3></h3>
+            <h3>CHANCE OF RAIN</h3>
+            <h3>WIND SPEED</h3>
+            <h3>TEMPERATURE</h3>
+          </div>
+
+          <div class="hour">
+            <h2>13:00</h2>
+            <i class="wi wi-day-sunny"></i>
+            <h2>98%</h2>
+            <h2>23 km/h</h2>
+            <h2>15 C</h2>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
 </html>
