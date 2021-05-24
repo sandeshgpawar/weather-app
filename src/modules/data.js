@@ -2,18 +2,21 @@ import {
   createHourlyForecast,
   displayLocationData,
   displayWeatherDetails,
-  setWeatherDetails,
+  createDailyForecast,
 } from './dom';
 
-function processHourlyData(arr) {
+function processHourlyData(data) {
+  const arr = data.hourly;
   const newArr = [];
   for (let i = 1; i < 22; i++) {
     const hour = {
-      time: arr[i].dt,
-      icon: arr[i].weather[0].id,
+      date: arr[i].dt,
+      weatherID: arr[i].weather[0].id,
       pressure: arr[i].pressure,
       humidity: arr[i].humidity,
       temp: arr[i].temp,
+      sunset: data.current.sunset,
+      sunrise: data.current.sunrise,
     };
 
     newArr.push(hour);
@@ -22,16 +25,18 @@ function processHourlyData(arr) {
   return newArr;
 }
 
-function processDailyData(arr) {
+function processDailyData(data) {
+  const arr = data.daily;
   const newArr = [];
   arr.forEach((element) => {
     const daily = {
-      day: element.dt,
-      icon: element.weather[0].id,
+      date: element.dt,
+      weatherID: element.weather[0].id,
       pressure: element.pressure,
       humidity: element.humidity,
-      temp_max: element.temp.max,
-      temp_min: element.temp.min,
+      temp: Math.round(element.temp.max) + ' | ' + Math.round(element.temp.min),
+      sunset: element.sunset,
+      sunrise: element.sunrise,
     };
 
     newArr.push(daily);
@@ -51,19 +56,20 @@ async function processData(data) {
     sunset: data.current.sunset,
     weather: data.current.weather[0].description,
     weatherID: data.current.weather[0].id,
-    hourly: processHourlyData(data.hourly),
-    daily: processDailyData(data.daily),
+    hourly: processHourlyData(data),
+    daily: processDailyData(data),
+    timezone: data['timezone_offset'],
+    wind: data.current['wind_speed'],
   };
 
-  console.log(myData);
   return myData;
 }
 
-/* function getUserPosition() {
+function getUserPosition() {
   return new Promise((resolve, reject) => {
     navigator.geolocation.getCurrentPosition(resolve, reject);
   });
-} */
+}
 
 async function getLocationDetails(location) {
   try {
@@ -80,10 +86,9 @@ async function getLocationDetails(location) {
       lon: locationObject[0].lon,
     };
 
-    console.log(userLocation);
     return userLocation;
-  } catch (err) {
-    console.log(err.message);
+  } catch {
+    alert('Oops! Something went wrong...');
   }
 }
 
@@ -96,10 +101,15 @@ async function getWeatherData(location, units = 'metric') {
     );
     const data = await weather.json();
 
-    processData(data).then((value) => displayLocationData(coords, value));
-  } catch (err) {
-    console.log(err.message);
+    processData(data).then((value) => {
+      displayLocationData(coords, value);
+      displayWeatherDetails(value);
+      createHourlyForecast(value);
+      createDailyForecast(value);
+    });
+  } catch {
+    alert('Oops! Something went wrong...');
   }
 }
 
-export { getWeatherData, getLocationDetails };
+export { getWeatherData, getLocationDetails, getUserPosition };
