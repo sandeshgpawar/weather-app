@@ -3,6 +3,11 @@
   font-family: 'Merriweather Sans', sans-serif;
 }
 
+::placeholder {
+  color: white;
+  opacity: 1;
+}
+
 html {
   height: 100%;
 }
