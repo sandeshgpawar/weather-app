@@ -14,6 +14,7 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
+  background-attachment: fixed;
   margin: 0;
   color: white;
 }
@@ -53,6 +54,7 @@ input {
 
 input:focus {
   outline: none;
+  border-bottom: 3px solid white;
 }
 
 main .location i {
@@ -68,7 +70,7 @@ main .location i {
 
 .weather-details .block div {
   display: grid;
-  grid-template-columns: 3em 8em;
+  grid-template-columns: 3em 7em;
   grid-template-rows: 2em 1em;
   align-items: center;
   justify-items: center;
@@ -85,13 +87,21 @@ main .location i {
   text-align: center;
 }
 
-.forecast button {
+.forecast .hourly-button,
+.forecast .daily-button {
   margin-bottom: 3em;
   padding: 10px 25px;
   margin-right: 20px;
   background: none;
-  border: 1px solid white;
+  border: none;
   color: white;
+  font-size: 1.15rem;
+  cursor: pointer;
+}
+
+.forecast button:hover {
+  transform: scale(1.1);
+  border: 1px solid white;
 }
 
 .forecast .daily .headers,
@@ -101,6 +111,10 @@ main .location i {
   display: grid;
   grid-template-columns: 25% 15% repeat(3, 20%);
   border-bottom: 1px dotted white;
+}
+
+.forecast-details {
+  display: none;
 }
 
 .forecast .daily .day,
@@ -123,9 +137,9 @@ main .location i {
 /*    JAVASCRIPT CLASSES      */
 
 .show {
-  display: block;
+  display: grid;
 }
 
-.hide {
-  display: none;
+.active {
+  border: 2px solid white !important;
 }
