@@ -14,7 +14,7 @@ async function appStart() {
     };
 
     const getCity = await fetch(
-      `http://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=027f71f3deef4424ea3b9f0d6b11dc68`
+      `https://api.openweathermap.org/data/2.5/weather?lat=${coords.lat}&lon=${coords.lon}&appid=027f71f3deef4424ea3b9f0d6b11dc68`
     );
     const getCityObject = await getCity.json();
     const cityAndCountry = {

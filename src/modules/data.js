@@ -74,7 +74,7 @@ function getUserPosition() {
 async function getLocationDetails(location) {
   try {
     const locationDetails = await fetch(
-      `http://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=027f71f3deef4424ea3b9f0d6b11dc68`,
+      `https://api.openweathermap.org/geo/1.0/direct?q=${location}&limit=1&appid=027f71f3deef4424ea3b9f0d6b11dc68`,
       { mode: 'cors' }
     );
     const locationObject = await locationDetails.json();
@@ -96,7 +96,7 @@ async function getWeatherData(location, units = 'metric') {
   try {
     const coords = await location;
     const weather = await fetch(
-      `http://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=${units}&appid=027f71f3deef4424ea3b9f0d6b11dc68`,
+      `https://api.openweathermap.org/data/2.5/onecall?lat=${coords.lat}&lon=${coords.lon}&units=${units}&appid=027f71f3deef4424ea3b9f0d6b11dc68`,
       { mode: 'cors' }
     );
     const data = await weather.json();
