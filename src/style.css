@@ -106,7 +106,7 @@ main .location i {
 
 .forecast button:hover {
   transform: scale(1.1);
-  border: 1px solid white;
+  border: 3px solid red;
 }
 
 .forecast .daily .headers,
