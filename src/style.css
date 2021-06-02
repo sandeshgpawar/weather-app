@@ -76,7 +76,7 @@ main .location i {
 .weather-details .block div {
   display: grid;
   grid-template-columns: 3em 3em;
-  grid-template-rows: 2em 1em;
+  grid-template-rows: 2em 2em;
   align-items: center;
   justify-items: center;
 }
