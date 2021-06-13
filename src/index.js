@@ -26,10 +26,10 @@ async function appStart() {
     getWeatherData(coords);
   } catch {
     let defaultCoords = {
-      lat: 54.548,
-      lon: 18.552,
-      name: 'Gdynia',
-      country: 'PL',
+      lat: 28.6448,
+      lon: 77.21672,
+      name: 'Delhi',
+      country: 'IN',
     };
 
     getWeatherData(defaultCoords);
